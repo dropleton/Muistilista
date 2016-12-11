@@ -58,11 +58,6 @@
 
     <build>
         <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-            
             <!--Liitännäinen, joka luo projektista käynnistyvän jar-tiedoston-->
             <plugin>
                 <groupId>org.springframework.boot</groupId>
