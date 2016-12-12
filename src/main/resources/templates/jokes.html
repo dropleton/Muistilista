@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Vitsitietokanta</title>
+        <meta charset="UTF-8"/>
+    </head>
+
+    <body>
+        <h1>Vitsitietokanta</h1>
+
+        <table>
+            <thead>Vitsit</thead>
+            <tbody>
+                <tr th:each="joke : ${jokes}">
+                    <td><a th:href="@{/jokes/{id}(id=${joke.id})}" th:text="${joke.otsikko}">Vitsin otsikko</a></td>
+                    <td th:text="${joke.sisalto}">Vitsin sisältö</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>Lisää uusi vitsi</h2>
+
+        <form method="POST" action="/jokes" >
+            <input type="text" name="joke" id="joke"/>
+            <input type="submit" value="Moarr!"/>
+        </form>
+    </body>
+</html>
