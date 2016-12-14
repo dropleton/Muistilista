@@ -27,16 +27,17 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
         http.authorizeRequests()
                 .antMatchers("/h2-console/*").permitAll()
-                .antMatchers("/jokes").permitAll().and()
-                //                .anyRequest().authenticated().and()
-                .formLogin().permitAll().and()
-                .logout().permitAll();
+//                .antMatchers("/jokes").permitAll()
+                .anyRequest().permitAll();
+        http.formLogin()
+                .permitAll();
+//                .logout().permitAll();
     }
 
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
 //        auth.inMemoryAuthentication()
-//                .withUser("jenni").password("porkkana").roles("USER");'
+//                .withUser("jenni").password("porkkana").roles("USER");
         auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
     }
 

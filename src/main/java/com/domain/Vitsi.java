@@ -7,6 +7,7 @@ import org.springframework.data.jpa.domain.AbstractPersistable;
 public class Vitsi extends AbstractPersistable<Long> {
     private String otsikko;
     private String sisalto;
+    private Kayttaja kayttaja;
 
     public String getOtsikko() {
         return otsikko;
@@ -16,12 +17,20 @@ public class Vitsi extends AbstractPersistable<Long> {
         return sisalto;
     }
 
+    public Kayttaja getKayttaja() {
+        return kayttaja;
+    }
+
     public void setOtsikko(String otsikko) {
         this.otsikko = otsikko;
     }
 
     public void setSisalto(String sisalto) {
         this.sisalto = sisalto;
+    }
+
+    public void setKayttaja(Kayttaja kayttaja) {
+        this.kayttaja = kayttaja;
     }
     
     
