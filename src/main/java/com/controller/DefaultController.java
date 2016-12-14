@@ -4,12 +4,12 @@ import com.domain.Kayttaja;
 import com.domain.Vitsi;
 import com.repository.KayttajaRepository;
 import com.repository.VitsiRepository;
-import com.service.SessionService;
+//import com.service.SessionService;
 import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.authentication.encoding.PasswordEncoder;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+//import org.springframework.security.authentication.encoding.PasswordEncoder;
+//import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -17,17 +17,14 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class DefaultController {
     
-    @Autowired
-    private BCryptPasswordEncoder passwordEncoder;
+//    @Autowired
+//    private BCryptPasswordEncoder passwordEncoder;
     
     @Autowired
     private KayttajaRepository kayttajaRepository;
     
     @Autowired
     private VitsiRepository vitsiRepository;
-    
-    @Autowired
-    private SessionService sessionService;
     
     @PostConstruct
     public void init() {
@@ -37,8 +34,8 @@ public class DefaultController {
         
         Kayttaja user = new Kayttaja();
         user.setUsername("jenni");
-        user.setPassword(passwordEncoder.encode("porkkana"));
-        
+//        user.setPassword(passwordEncoder.encode("porkkana"));
+        user.setPassword("porkkana");
         user = kayttajaRepository.save(user);
         
         Vitsi vitsi = new Vitsi();
@@ -51,6 +48,7 @@ public class DefaultController {
     @RequestMapping("*")
     @ResponseBody
     public String handleDefault() {
+        System.out.println("asd2");
         return "redirect:/jokes";
     }
     
